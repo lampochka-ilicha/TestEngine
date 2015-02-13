@@ -64,10 +64,10 @@ public class Vector {
                 z*multiplier.z;
     }
 
-    public Vector add(Vector summand) {
-        return new Vector(x + summand.x,
-                y + summand.y,
-                z + summand.z);
+    public Vector add(Vector item) {
+        return new Vector(x + item.x,
+                y + item.y,
+                z + item.z);
     }
 
 
