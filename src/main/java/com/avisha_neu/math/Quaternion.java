@@ -61,6 +61,14 @@ public class Quaternion {
         this.v.setZ(z);
     }
 
+    public Vector toVector() {
+        return v;
+    }
+
+    public static Quaternion fromVector (Vector v) {
+        return new Quaternion(v, 0);
+    }
+
     public Quaternion multiply(double multiplier) {
         return new Quaternion(v.multiply(multiplier),
                 phi*multiplier);
@@ -70,7 +78,7 @@ public class Quaternion {
         return new Quaternion(
                 v.multiply(multiplier.v)
                         .add(multiplier.v.multiply(phi)
-                        .add(v.multiply(multiplier.phi))),
+                                .add(v.multiply(multiplier.phi))),
                 phi*multiplier.phi - v.multiplyScalar(multiplier.v));
     }
 
@@ -83,7 +91,7 @@ public class Quaternion {
     }
 
     public  Quaternion getInverse() {
-        return   getConjugated().multiply(1.0/getNorm());
+        return getConjugated().multiply(1.0/getNorm());
     }
 
 
