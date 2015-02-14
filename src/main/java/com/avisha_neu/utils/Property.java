@@ -8,6 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Created by Tatyana.Kalnitskaya on 14.02.15.
  */
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface Property {

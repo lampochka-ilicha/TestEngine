@@ -10,6 +10,7 @@ import java.util.Properties;
 /**
  * Created by Tatyana.Kalnitskaya on 14.02.15.
  */
+
 public class PropertiesConfigurator {
 
     public static void fillClassStaticFields(String filePath, Class class_) {
