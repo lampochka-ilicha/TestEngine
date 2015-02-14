@@ -1,32 +1,39 @@
 package com.avisha_neu;
 
+import com.avisha_neu.properties.Physics;
+import com.avisha_neu.utils.PropertiesConfigurator;
+
 import javax.media.opengl.*;
-import javax.media.opengl.awt.GLCanvas;
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.util.Properties;
 
 /**
  * Created by Tatyana.Kalnitskaya on 11.02.15.
  */
+
 public class Main implements GLEventListener {
     public static void main(String[] args) {
+        Physics.init();
 
-        GLProfile glp = GLProfile.getDefault();
-        GLCapabilities caps = new GLCapabilities(glp);
-        GLCanvas canvas = new GLCanvas(caps);
+        System.out.println(Physics.g);
+        System.out.println(Physics.active);
+        System.out.println(Physics.name);
+        System.out.println(Physics.v);
 
-        canvas.addGLEventListener(new Main());
-        Frame frame = new Frame("Window Test");
-        frame.setSize(300, 300);
-        frame.add(canvas);
-        frame.setVisible(true);
-
-        frame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
+//       // GLProfile glp = GLProfile.getDefault();
+//        GLCapabilities caps = new GLCapabilities(glp);
+//        GLCanvas canvas = new GLCanvas(caps);
+//
+//        canvas.addGLEventListener(new Main());
+//        Frame frame = new Frame("Window Test");
+//        frame.setSize(300, 300);
+//        frame.add(canvas);
+//        frame.setVisible(true);
+//
+//        frame.addWindowListener(new WindowAdapter() {
+//            public void windowClosing(WindowEvent e) {
+//                System.exit(0);
+//            }
+//        });
 
     }
 
