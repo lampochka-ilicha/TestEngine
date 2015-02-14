@@ -13,7 +13,7 @@ import java.util.Properties;
  */
 public class PropertiesConfigurator {
 
-    public static void fillClassFields(String filePath, Class class_) {
+    public static void fillClassStaticFields(String filePath, Class class_) {
         Properties prop = getPropertiesFromFile(filePath);
         bindPropertiesToFields(prop, class_);
     }
@@ -42,7 +42,7 @@ public class PropertiesConfigurator {
                 Class fieldType = field.getType();
                 try {
                     field.set(null, castValueToFieldType(fieldType, value));
-                } catch (Exception e) {
+                } catch (IllegalAccessException e) {
                     System.out.print(e);
                 }
             }

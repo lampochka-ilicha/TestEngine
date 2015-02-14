@@ -9,6 +9,9 @@ import com.avisha_neu.utils.Property;
 public class Physics {
     public final static String propertyFile = "/properties/physics.properties";
 
+    /**
+     * bdfgsdfdsf
+     */
     @Property("g")
     public static int g;
 
@@ -23,7 +26,6 @@ public class Physics {
 
 
     public static void init() {
-        PropertiesConfigurator.fillClassFields(propertyFile, Physics.class);
+        PropertiesConfigurator.fillClassStaticFields(propertyFile, Physics.class);
     }
-
 }
