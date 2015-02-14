@@ -1,7 +1,7 @@
 package com.avisha_neu.math;
 
 /**
- * Created by tatyana.kalnitskaya on 13.02.15.
+ * Created by Tatyana.Kalnitskaya on 13.02.15.
  */
 public class Vector {
     private double x;

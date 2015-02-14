@@ -2,14 +2,13 @@ package com.avisha_neu.utils;
 
 import com.avisha_neu.Main;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
 /**
- * Created by Tatyana.Kalniskaya on 14.02.15.
+ * Created by Tatyana.Kalnitskaya on 14.02.15.
  */
 public class PropertiesConfigurator {
 
@@ -25,8 +24,6 @@ public class PropertiesConfigurator {
             properties.load(inputStream);
             inputStream.close();
             return properties;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

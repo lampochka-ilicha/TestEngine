@@ -1,7 +1,7 @@
 package com.avisha_neu.math;
 
 /**
- * Created by Tatyana.Kalniskaya on 11.02.15.
+ * Created by Tatyana.Kalnitskaya on 11.02.15.
  */
 public class Quaternion {
     private double phi;

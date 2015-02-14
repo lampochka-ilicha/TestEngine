@@ -4,7 +4,7 @@ import com.avisha_neu.utils.PropertiesConfigurator;
 import com.avisha_neu.utils.Property;
 
 /**
- * Created by Tatyana.Kalniskaya on 13.02.15.
+ * Created by Tatyana.Kalnitskaya on 13.02.15.
  */
 public class Physics {
     public final static String propertyFile = "/properties/physics.properties";
