@@ -1,5 +1,7 @@
 package com.avisha_neu.scene;
 
+import com.avisha_neu.properties.WindowProperties;
+
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 
@@ -9,7 +11,7 @@ import javax.media.opengl.GL2;
 public class Scene {
     private Camera camera;
 
-    public Scene() {
+    public Scene(WindowProperties windowProperties) {
         this.camera = new Camera();
     }
 

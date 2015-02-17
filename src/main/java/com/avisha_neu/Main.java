@@ -1,6 +1,8 @@
 package com.avisha_neu;
 
 import com.avisha_neu.properties.PhysicsProperties;
+import com.avisha_neu.properties.WindowProperties;
+import com.avisha_neu.scene.Scene;
 import com.jogamp.opengl.util.Animator;
 
 import javax.media.opengl.GLCapabilities;
@@ -26,7 +28,9 @@ public class Main {
         GLCapabilities caps = new GLCapabilities(glp);
         GLCanvas canvas = new GLCanvas(caps);
 
-        JoglEventListener listener = new JoglEventListener(canvas);
+        WindowProperties windowProperties = new WindowProperties();
+        Scene scene = new Scene(windowProperties);
+        JoglEventListener listener = new JoglEventListener(canvas, scene);
         canvas.addGLEventListener(listener);
         canvas.addKeyListener(listener);
         Animator animator = new Animator(canvas);
