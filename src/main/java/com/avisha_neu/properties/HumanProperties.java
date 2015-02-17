@@ -16,8 +16,23 @@ public class HumanProperties {
     @Property("velocity")
     private double velocity;
 
+    @Property("visual.angle")
+    private double viewAngle;
+
+    @Property("visual.distance")
+    private double viewDistance;
+
+
     public double getVelocity() {
         return velocity;
+    }
+
+    public double getViewAngle() {
+        return viewAngle;
+    }
+
+    public double getViewDistance() {
+        return viewDistance;
     }
 
     public void initProperties() {
