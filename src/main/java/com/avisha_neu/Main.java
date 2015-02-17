@@ -1,6 +1,6 @@
 package com.avisha_neu;
 
-import com.avisha_neu.properties.Physics;
+import com.avisha_neu.properties.PhysicsProperties;
 import com.jogamp.opengl.util.Animator;
 
 import javax.media.opengl.GLCapabilities;
@@ -16,12 +16,11 @@ import java.awt.event.WindowEvent;
 
 public class Main {
     public static void main(String[] args) {
-        Physics.init();
+        PhysicsProperties.init();
 
-        System.out.println(Physics.g);
-        System.out.println(Physics.active);
-        System.out.println(Physics.name);
-        System.out.println(Physics.v);
+        System.out.println(PhysicsProperties.g);
+        System.out.println(PhysicsProperties.active);
+        System.out.println(PhysicsProperties.name);
 
         GLProfile glp = GLProfile.getDefault();
         GLCapabilities caps = new GLCapabilities(glp);
