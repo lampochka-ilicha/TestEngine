@@ -1,6 +1,6 @@
 package com.avisha_neu;
 
-import com.avisha_neu.properties.PhysicsProperties;
+import com.avisha_neu.properties.CameraProperties;
 import com.avisha_neu.properties.WindowProperties;
 import com.avisha_neu.scene.Scene;
 import com.jogamp.opengl.util.Animator;
@@ -17,12 +17,13 @@ import java.awt.event.WindowEvent;
  */
 
 public class Main {
-    public static void main(String[] args) {
-        PhysicsProperties.init();
 
-        System.out.println(PhysicsProperties.g);
-        System.out.println(PhysicsProperties.active);
-        System.out.println(PhysicsProperties.name);
+    public static void init(){
+        CameraProperties.initProperties();
+        WindowProperties.initProperties();
+    }
+    public static void main(String[] args) {
+        init();
 
         GLProfile glp = GLProfile.getDefault();
         GLCapabilities caps = new GLCapabilities(glp);
@@ -36,7 +37,7 @@ public class Main {
         Animator animator = new Animator(canvas);
         animator.start();
         Frame frame = new Frame("Window Test");
-        frame.setSize(600, 300);
+        frame.setSize(WindowProperties.getWidth(), WindowProperties.getHeight());
         frame.add(canvas);
         frame.setVisible(true);
 

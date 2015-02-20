@@ -9,39 +9,35 @@ import com.avisha_neu.utils.Property;
 public class WindowProperties {
     public final static String propertyFile = "/properties/window.properties";
 
-    public WindowProperties() {
-        initProperties();
-    }
-
     @Property("width")
-    private double width;
+    private static int width;
 
     @Property("height")
-    private double height;
+    private static int height;
 
     @Property("z.near")
-    private double zNear;
+    private static double zNear;
 
     @Property("z.far")
-    private double zFar;
+    private static double zFar;
 
-    public double getWidth() {
+    public static int getWidth() {
         return width;
     }
 
-    public double getHeight() {
+    public static int getHeight() {
         return height;
     }
 
-    public double getZFar() {
+    public static double getZFar() {
         return zFar;
     }
 
-    public double getZNear() {
+    public static double getZNear() {
         return zNear;
     }
 
-    public void initProperties() {
+    public static void initProperties() {
         PropertiesConfigurator.fillClassStaticFields(propertyFile, WindowProperties.class);
     }
 }

@@ -39,6 +39,7 @@ public class PropertiesConfigurator {
                 String value = properties.getProperty(key);
                 Class fieldType = field.getType();
                 try {
+                    field.setAccessible(true);
                     field.set(null, castValueToFieldType(fieldType, value));
                 } catch (IllegalAccessException e) {
                     System.out.print(e);
