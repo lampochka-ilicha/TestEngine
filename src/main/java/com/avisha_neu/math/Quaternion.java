@@ -7,17 +7,23 @@ public class Quaternion {
     private double phi;
     private Vector v;
 
-    public Quaternion(Vector v, double phi, boolean needToBeComputed) {
-        if (needToBeComputed){
-            v = v.multiply(Math.sin(phi/2.0));
-            phi = Math.cos(phi/2.0);
-        }
+    private Quaternion(Vector v, double phi) {
         this.v = v;
         this.phi = phi;
     }
 
+    public static Quaternion create(Vector v, double phi) {
+        return new Quaternion(v, phi);
+    }
+
+    public static Quaternion rawCreate(Vector v, double phi){
+        v = v.multiply(Math.sin(phi/2.0));
+        phi = Math.cos(phi/2.0);
+        return new Quaternion(v, phi);
+    }
+
     public static Quaternion fromVector (Vector v) {
-        return new Quaternion(v, 0, false);
+        return new Quaternion(v, 0);
     }
 
     public double getPhi() {
@@ -69,7 +75,7 @@ public class Quaternion {
 
     public Quaternion multiply(double multiplier) {
         return new Quaternion(v.multiply(multiplier),
-                phi*multiplier, false);
+                phi*multiplier);
     }
 
     public Quaternion multiply(Quaternion multiplier) {
@@ -77,7 +83,7 @@ public class Quaternion {
                 v.multiply(multiplier.v)
                         .add(multiplier.v.multiply(phi)
                                 .add(v.multiply(multiplier.phi))),
-                phi*multiplier.phi - v.multiplyScalar(multiplier.v), false);
+                phi*multiplier.phi - v.multiplyScalar(multiplier.v));
     }
 
     public double getNorm(){
@@ -85,7 +91,7 @@ public class Quaternion {
     }
 
     public  Quaternion getConjugated() {
-        return new Quaternion(v.getConjugated(), phi, false);
+        return new Quaternion(v.getConjugated(), phi);
     }
 
     public  Quaternion getInverse() {
