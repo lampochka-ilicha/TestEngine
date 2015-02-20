@@ -34,6 +34,7 @@ public class Main {
         JoglEventListener listener = new JoglEventListener(canvas, scene);
         canvas.addGLEventListener(listener);
         canvas.addKeyListener(listener);
+        canvas.addMouseMotionListener(listener);
         Animator animator = new Animator(canvas);
         animator.start();
         Frame frame = new Frame("Window Test");

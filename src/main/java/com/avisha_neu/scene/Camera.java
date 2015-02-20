@@ -1,5 +1,6 @@
 package com.avisha_neu.scene;
 
+import com.avisha_neu.math.Manipulator;
 import com.avisha_neu.math.Vector;
 import com.avisha_neu.properties.CameraProperties;
 import com.avisha_neu.properties.WindowProperties;
@@ -12,13 +13,18 @@ import javax.media.opengl.glu.GLU;
  */
 public class Camera {
     private Vector position = new Vector(0, 0, 5);
-    private  Vector direction = new Vector(0, 0, -5);
+    private Vector direction = new Vector(0, 0, -5);
     private Vector up = new Vector(0, 1, 0);
 
     public  Camera () {}
 
     public void translate(Vector translation) {
         position = position.add(translation);
+    }
+
+    public void rotate(int translation) {
+       double angle = translation*CameraProperties.getRotateVelocity();
+       direction = Manipulator.rotateVector(up, angle, direction);
     }
 
     public void stepToTheLeft() {
