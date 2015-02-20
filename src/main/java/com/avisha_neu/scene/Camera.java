@@ -28,7 +28,7 @@ public class Camera {
     }
 
     public void stepToTheLeft() {
-        Vector leftTravel = new Vector(-CameraProperties.getVelocity(), 0, 0);
+        Vector leftTravel = direction.multiply(CameraProperties.getVelocity()); //new Vector(-CameraProperties.getVelocity(), 0, 0);
         translate(leftTravel);
     }
 
@@ -38,12 +38,12 @@ public class Camera {
     }
 
     public void stepForward() {
-        Vector forwardTravel = new Vector(0, 0, -CameraProperties.getVelocity());
+        Vector forwardTravel = direction.multiply(CameraProperties.getVelocity());//new Vector(0, 0, -CameraProperties.getVelocity());
         translate(forwardTravel);
     }
 
     public void stepBack() {
-        Vector backTravel = new Vector(0, 0, CameraProperties.getVelocity());
+        Vector backTravel = direction.multiply( - CameraProperties.getVelocity());
         translate(backTravel);
     }
 

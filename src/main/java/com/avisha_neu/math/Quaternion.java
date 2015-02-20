@@ -13,60 +13,26 @@ public class Quaternion {
     }
 
     public static Quaternion create(Vector v, double phi) {
-        return new Quaternion(v, phi);
+        return new Quaternion(v, phi).normalize();
     }
 
     public static Quaternion rawCreate(Vector v, double phi){
         v = v.multiply(Math.sin(phi/2.0));
         phi = Math.cos(phi/2.0);
-        return new Quaternion(v, phi);
+        return new Quaternion(v, phi).normalize();
     }
 
     public static Quaternion fromVector (Vector v) {
         return new Quaternion(v, 0);
     }
 
-    public double getPhi() {
-        return phi;
+    public Quaternion normalize() {
+        double modulus = Math.sqrt(getNorm());
+        v = v.multiply(1.0/modulus);
+        phi = phi*(1.0/modulus);
+        return this;
     }
 
-    public void setPhi(double phi) {
-        this.phi = phi;
-    }
-
-    public Vector getV() {
-        return v;
-    }
-
-    public void setV(Vector v) {
-        this.v = v;
-    }
-
-
-    public double getX() {
-        return v.getX();
-    }
-
-    public void setX(double x) {
-        this.v.setX(x);
-    }
-
-
-    public double getY() {
-        return v.getY();
-    }
-
-    public void setY(double y) {
-        this.v.setY(y);
-    }
-
-    public double getZ() {
-        return v.getZ();
-    }
-
-    public void setZ(double z) {
-        this.v.setZ(z);
-    }
 
     public Vector toVector() {
         return v;

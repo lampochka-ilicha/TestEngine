@@ -6,6 +6,7 @@ import com.avisha_neu.utils.Property;
 /**
  * Created by tatyana.kalnitskaya on 17.02.15.
  */
+
 public class CameraProperties {
     public final static String propertyFile = "/properties/camera.properties";
 
