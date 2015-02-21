@@ -11,6 +11,7 @@ import javax.media.opengl.awt.GLCanvas;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Tatyana.Kalnitskaya on 11.02.15.
@@ -38,6 +39,10 @@ public class Main {
         Animator animator = new Animator(canvas);
         animator.start();
         Frame frame = new Frame("Window Test");
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Image i = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        Cursor noCursor = t.createCustomCursor(i, new Point(0, 0), "none");
+        frame.setCursor(noCursor);
         frame.setSize(WindowProperties.getWidth(), WindowProperties.getHeight());
         frame.add(canvas);
         frame.setVisible(true);

@@ -18,9 +18,6 @@ public class Camera {
 
     public  Camera () {}
 
-    public void translate(Vector translation) {
-        position = position.add(translation);
-    }
 
     public void rotate(int translation) {
        double angle = translation*CameraProperties.getRotateVelocity();
@@ -28,23 +25,19 @@ public class Camera {
     }
 
     public void stepToTheLeft() {
-        Vector leftTravel = direction.multiply(CameraProperties.getVelocity()); //new Vector(-CameraProperties.getVelocity(), 0, 0);
-        translate(leftTravel);
+        position = Manipulator.translateVector(direction.multiply(up), - CameraProperties.getVelocity(), position);
     }
 
     public void stepToTheRight() {
-        Vector rightTravel = new Vector(CameraProperties.getVelocity(), 0, 0);
-        translate(rightTravel);
+        position = Manipulator.translateVector(direction.multiply(up), CameraProperties.getVelocity(), position);
     }
 
     public void stepForward() {
-        Vector forwardTravel = direction.multiply(CameraProperties.getVelocity());//new Vector(0, 0, -CameraProperties.getVelocity());
-        translate(forwardTravel);
+        position = Manipulator.translateVector(direction, CameraProperties.getVelocity(), position);
     }
 
     public void stepBack() {
-        Vector backTravel = direction.multiply( - CameraProperties.getVelocity());
-        translate(backTravel);
+        position = Manipulator.translateVector(direction, -CameraProperties.getVelocity(), position);
     }
 
     public void setView(GL2 gl) {

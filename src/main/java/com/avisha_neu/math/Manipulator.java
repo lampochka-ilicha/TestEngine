@@ -3,21 +3,31 @@ package com.avisha_neu.math;
 public class Manipulator {
 
     /**
-     * Returns an Image object that can then be painted on the screen.
-     * <p>
-     * This method always returns immediately, whether or not the
-     * image exists. When this applet attempts to draw the image on
-     * the screen, the data will be loaded. The graphics primitives
-     * that draw the image will incrementally paint on the screen.
+     * Returns new Vector
      *
-     * @param  axis  an absolute URL giving the base location of the image
-     * @param  angle the location of the image, relative to the url argument
-     * @return      the image at the specified URL
-     * @see
+     * @param axis   rotation axis.
+     * @param angle  rotation angle, in radians.
+     * @param vector a Vector to be rotated.
+     * @return rotated Vector.
      */
-       public static Vector rotateVector(Vector axis, double angle, Vector vector){
+    public static Vector rotateVector(Vector axis, double angle, Vector vector) {
         Quaternion q = Quaternion.rawCreate(axis, angle);
         Quaternion q1 = q.getInverse();
-        return q.multiply(Quaternion.fromVector(vector)).multiply(q1).toVector();
+        Quaternion mutating = Quaternion.fromVector(vector);
+        return q.multiply(mutating).multiply(q1).toVector();
     }
+
+    /**
+     * Returns new Vector
+     *
+     * @param direction   direction of translation.
+     * @param translation translation (absolute)
+     * @param vector a Vector to be translated.
+     * @return translated Vector.
+     */
+    public static Vector translateVector(Vector direction, double translation, Vector vector) {
+        return vector.add(direction.normalize().multiply(translation));
+    }
+
+
 }

@@ -5,6 +5,7 @@ package com.avisha_neu.math;
  */
 
 public class Vector {
+
     private double x;
     private double y;
     private double z;
@@ -39,30 +40,37 @@ public class Vector {
         this.z = z;
     }
 
+
+    public Vector normalize() {
+        double module = Math.sqrt(getNorm());
+        return this.multiply(1.0/module);
+    }
+
+
     public double getNorm() {
-        return x*x + y*y + z*z;
+        return x * x + y * y + z * z;
     }
 
     public Vector getConjugated() {
-        return new Vector (-x, -y, -z);
+        return new Vector(-x, -y, -z);
     }
 
     public Vector multiply(double multiplier) {
-        return new Vector(x*multiplier,
-                y*multiplier,
-                z*multiplier);
+        return new Vector(x * multiplier,
+                y * multiplier,
+                z * multiplier);
     }
 
     public Vector multiply(Vector multiplier) {
-        return new Vector(y*multiplier.z - z*multiplier.y,
-                z*multiplier.x - x*multiplier.z,
-                x*multiplier.y - y*multiplier.x);
+        return new Vector(y * multiplier.z - z * multiplier.y,
+                z * multiplier.x - x * multiplier.z,
+                x * multiplier.y - y * multiplier.x);
     }
 
     public double multiplyScalar(Vector multiplier) {
-        return x*multiplier.x +
-                y*multiplier.y +
-                z*multiplier.z;
+        return x * multiplier.x +
+                y * multiplier.y +
+                z * multiplier.z;
     }
 
     public Vector add(Vector item) {
