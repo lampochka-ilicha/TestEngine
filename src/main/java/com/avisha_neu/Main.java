@@ -19,6 +19,8 @@ import java.awt.image.BufferedImage;
 
 public class Main {
 
+    static GLCanvas canvas;
+
     public static void init(){
         CameraProperties.initProperties();
         WindowProperties.initProperties();
@@ -28,7 +30,7 @@ public class Main {
 
         GLProfile glp = GLProfile.getDefault();
         GLCapabilities caps = new GLCapabilities(glp);
-        GLCanvas canvas = new GLCanvas(caps);
+        canvas = new GLCanvas(caps);
 
         WindowProperties windowProperties = new WindowProperties();
         Scene scene = new Scene(windowProperties);
@@ -46,6 +48,7 @@ public class Main {
         frame.setSize(WindowProperties.getWidth(), WindowProperties.getHeight());
         frame.add(canvas);
         frame.setVisible(true);
+        frame.setFocusable(true);
 
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {

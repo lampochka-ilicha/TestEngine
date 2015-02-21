@@ -1,5 +1,6 @@
 package com.avisha_neu;
 
+import com.avisha_neu.properties.CameraProperties;
 import com.avisha_neu.properties.WindowProperties;
 import com.avisha_neu.scene.Scene;
 
@@ -27,14 +28,15 @@ public class JoglEventListener implements GLEventListener, KeyListener, MouseMot
 
     @Override
     public void init(javax.media.opengl.GLAutoDrawable glAutoDrawable) {
-       setCursorToTheCenter();
+        setCursorToTheCenter();
+        canvas.requestFocusInWindow();
     }
 
     @Override
     public void dispose(javax.media.opengl.GLAutoDrawable glAutoDrawable) {
     }
 
-    private void setCursorToTheCenter(){
+    private void setCursorToTheCenter() {
         try {
             Robot rob = new Robot();
             rob.mouseMove(middleX, middleY);
@@ -75,8 +77,12 @@ public class JoglEventListener implements GLEventListener, KeyListener, MouseMot
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        scene.getCamera().rotate(e.getXOnScreen() - middleX);
-        setCursorToTheCenter();
+        double xTranslation = (e.getXOnScreen() - middleX) * CameraProperties.getRotationVelocity();
+        double yTranslation = (e.getYOnScreen() - middleY) * CameraProperties.getRotationVelocity();
+        if (!(xTranslation == 0 && yTranslation == 0)) {
+            scene.getCamera().rotate(xTranslation, yTranslation);
+            setCursorToTheCenter();
+        }
     }
 
     @Override

@@ -42,13 +42,22 @@ public class Vector {
 
 
     public Vector normalize() {
-        double module = Math.sqrt(getNorm());
-        return this.multiply(1.0/module);
+       double module = getModule();
+       if (module!=0) {
+        return this.multiply(1.0/getModule());
+       } else {
+           System.out.println("Division by zero");
+           return this;
+       }
     }
 
 
     public double getNorm() {
         return x * x + y * y + z * z;
+    }
+
+    public double getModule() {
+        return Math.sqrt(getNorm());
     }
 
     public Vector getConjugated() {

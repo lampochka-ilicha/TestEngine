@@ -14,7 +14,7 @@ public class CameraProperties {
     private static double velocity;
 
     @Property("rotate.velocity")
-    private static double rotateVelocity;
+    private static double rotationVelocity;
 
     @Property("visual.angle")
     private static double viewAngle;
@@ -23,8 +23,8 @@ public class CameraProperties {
         return velocity;
     }
 
-    public static double getRotateVelocity() {
-        return rotateVelocity;
+    public static double getRotationVelocity() {
+        return rotationVelocity;
     }
 
     public static double getViewAngle() {
