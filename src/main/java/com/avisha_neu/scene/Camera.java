@@ -69,7 +69,6 @@ public class Camera {
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
         GLU glu = new GLU();
-        Vector test = direction.add(position).normalize();
         glu.gluLookAt(position.getX(), position.getY(),
                 position.getZ(),
                 direction.getX() + position.getX(),

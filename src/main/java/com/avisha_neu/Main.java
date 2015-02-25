@@ -1,8 +1,8 @@
 package com.avisha_neu;
 
-import com.avisha_neu.properties.CameraProperties;
 import com.avisha_neu.properties.WindowProperties;
 import com.avisha_neu.scene.Scene;
+import com.avisha_neu.utils.PropertiesConfigurator;
 import com.jogamp.opengl.util.Animator;
 
 import javax.media.opengl.GLCapabilities;
@@ -22,8 +22,7 @@ public class Main {
     static GLCanvas canvas;
 
     public static void init(){
-        CameraProperties.initProperties();
-        WindowProperties.initProperties();
+        PropertiesConfigurator.initAllApplicationProperties();
     }
     public static void main(String[] args) {
         init();

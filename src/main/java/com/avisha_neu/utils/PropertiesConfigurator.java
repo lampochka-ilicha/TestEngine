@@ -1,17 +1,31 @@
 package com.avisha_neu.utils;
 
 import com.avisha_neu.Main;
+import org.reflections.Reflections;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * Created by Tatyana.Kalnitskaya on 14.02.15.
  */
 
 public class PropertiesConfigurator {
+    private static final String PROPERTIES_PACKAGE = "com.avisha_neu.properties";
+
+    public static void initAllApplicationProperties() {
+        Reflections reflections = new Reflections(PROPERTIES_PACKAGE);
+        Set<Class<?>> annotated = reflections.getTypesAnnotatedWith(PropertiesRepository.class);
+
+        for (Class<?> properties : annotated) {
+            PropertiesRepository propertiesAnnotation = properties.getAnnotation(PropertiesRepository.class);
+            String filePath = propertiesAnnotation.value();
+            fillClassStaticFields(filePath, properties);
+        }
+    }
 
     public static void fillClassStaticFields(String filePath, Class class_) {
         Properties prop = getPropertiesFromFile(filePath);

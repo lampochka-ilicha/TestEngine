@@ -46,7 +46,6 @@ public class Vector {
        if (module!=0) {
         return this.multiply(1.0/getModule());
        } else {
-           System.out.println("Division by zero");
            return this;
        }
     }

@@ -1,13 +1,13 @@
 package com.avisha_neu.properties;
 
-import com.avisha_neu.utils.PropertiesConfigurator;
+import com.avisha_neu.utils.PropertiesRepository;
 import com.avisha_neu.utils.Property;
 
 /**
  * Created by tatyana.kalnitskaya on 17.02.15.
  */
+@PropertiesRepository("/properties/window.properties")
 public class WindowProperties {
-    public final static String propertyFile = "/properties/window.properties";
 
     @Property("width")
     private static int width;
@@ -37,7 +37,4 @@ public class WindowProperties {
         return zNear;
     }
 
-    public static void initProperties() {
-        PropertiesConfigurator.fillClassStaticFields(propertyFile, WindowProperties.class);
-    }
 }
