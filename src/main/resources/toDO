@@ -1,3 +1,4 @@
 //toDo:
  1. Одновременное нажатие клавиш движения
  2. Убрать задержку после нажатия клавиши движения
+ http://stackoverflow.com/questions/9050986/fixing-delay-issue-in-java-keypress-action
