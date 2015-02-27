@@ -29,7 +29,7 @@ public class Manipulator {
      * @param vector a Vector to be rotated.
      * @return rotated Vector.
      */
-    public static Vector rotateVector(Vector axis, double angle, Vector vector) {
+    private static Vector rotateVector(Vector axis, double angle, Vector vector) {
         Quaternion q = Quaternion.rawCreate(axis, angle);
         Quaternion q1 = q.getInverse();
         Quaternion mutating = Quaternion.fromVector(vector);

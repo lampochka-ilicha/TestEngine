@@ -1,7 +1,5 @@
 package com.avisha_neu.scene;
 
-import com.avisha_neu.properties.WindowProperties;
-
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 
@@ -9,9 +7,9 @@ import javax.media.opengl.GL2;
  * Created by tatyana.kalnitskaya on 17.02.15.
  */
 public class Scene {
-    private Camera camera;
+    private final Camera camera;
 
-    public Scene(WindowProperties windowProperties) {
+    public Scene() {
         this.camera = new Camera();
     }
 

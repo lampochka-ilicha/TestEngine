@@ -15,11 +15,11 @@ import java.awt.event.MouseMotionListener;
 /**
  * Created by tatyana.kalnitskaya on 17.02.15.
  */
-public class JoglEventListener implements GLEventListener, KeyListener, MouseMotionListener {
+class JoglEventListener implements GLEventListener, KeyListener, MouseMotionListener {
     private GLCanvas canvas;
-    private Scene scene;
-    int middleX = (WindowProperties.getWidth() / 2);
-    int middleY = (WindowProperties.getHeight() / 2);
+    private final Scene scene;
+    private final int middleX = (WindowProperties.getWidth() / 2);
+    private final int middleY = (WindowProperties.getHeight() / 2);
 
     public JoglEventListener(GLCanvas canvas, Scene scene) {
         this.canvas = canvas;

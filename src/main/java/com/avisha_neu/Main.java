@@ -19,9 +19,9 @@ import java.awt.image.BufferedImage;
 
 public class Main {
 
-    static GLCanvas canvas;
+    private static GLCanvas canvas;
 
-    public static void init(){
+    private static void init(){
         PropertiesConfigurator.initAllApplicationProperties();
     }
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class Main {
         canvas = new GLCanvas(caps);
 
         WindowProperties windowProperties = new WindowProperties();
-        Scene scene = new Scene(windowProperties);
+        Scene scene = new Scene();
         JoglEventListener listener = new JoglEventListener(canvas, scene);
         canvas.addGLEventListener(listener);
         canvas.addKeyListener(listener);

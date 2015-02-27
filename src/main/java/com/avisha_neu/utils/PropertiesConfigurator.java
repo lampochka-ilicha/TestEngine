@@ -27,7 +27,7 @@ public class PropertiesConfigurator {
         }
     }
 
-    public static void fillClassStaticFields(String filePath, Class class_) {
+    private static void fillClassStaticFields(String filePath, Class class_) {
         Properties prop = getPropertiesFromFile(filePath);
         bindPropertiesToFields(prop, class_);
     }

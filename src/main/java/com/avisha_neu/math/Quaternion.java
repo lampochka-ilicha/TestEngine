@@ -26,7 +26,7 @@ public class Quaternion {
         return new Quaternion(v, 0);
     }
 
-    public Quaternion normalize() {
+    Quaternion normalize() {
         double modulus = Math.sqrt(getNorm());
         v = v.multiply(1.0/modulus);
         phi = phi*(1.0/modulus);
@@ -39,7 +39,7 @@ public class Quaternion {
     }
 
 
-    public Quaternion multiply(double multiplier) {
+    Quaternion multiply(double multiplier) {
         return new Quaternion(v.multiply(multiplier),
                 phi*multiplier);
     }
@@ -52,11 +52,11 @@ public class Quaternion {
                 phi*multiplier.phi - v.multiplyScalar(multiplier.v));
     }
 
-    public double getNorm(){
+    double getNorm(){
         return v.getNorm() + phi*phi;
     }
 
-    public  Quaternion getConjugated() {
+    Quaternion getConjugated() {
         return new Quaternion(v.getConjugated(), phi);
     }
 

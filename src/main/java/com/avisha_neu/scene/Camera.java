@@ -14,7 +14,7 @@ import javax.media.opengl.glu.GLU;
 public class Camera {
     private Vector position = new Vector(0, 0, 5);
     private Vector direction = new Vector(0, 0, -5);
-    private Vector up = new Vector(0, 1, 0);
+    private final Vector up = new Vector(0, 1, 0);
 
     public  Camera () {}
 
