@@ -72,20 +72,20 @@ public class Camera {
 
     public void move() {
         Vector directionXZ = getDirectionXZUnit();
-        Vector newPosition = position;
+        Vector translation = new Vector(0,0,0);
         if (movingBack) {
-            newPosition = Manipulator.translateVector(directionXZ, -CameraProperties.getVelocity(), newPosition);
+            translation = translation.add(directionXZ.multiply(-1.0));
         }
         if (movingForward) {
-            newPosition = Manipulator.translateVector(directionXZ, CameraProperties.getVelocity(), newPosition);
+            translation = translation.add(directionXZ);
         }
         if (movingToTheRight) {
-            newPosition = Manipulator.translateVector(directionXZ.multiply(up), CameraProperties.getVelocity(), newPosition);
+            translation = translation.add(directionXZ.multiply(up));
         }
         if (movingToTheLeft) {
-            newPosition = Manipulator.translateVector(directionXZ.multiply(up), -CameraProperties.getVelocity(), newPosition);
+            translation = translation.add(directionXZ.multiply(up).multiply(-1.0));
         }
-        position = newPosition;
+        position = Manipulator.translateVector(translation.normalize(), CameraProperties.getVelocity(), position);
     }
 
     public void setView(GL2 gl) {
@@ -113,6 +113,4 @@ public class Camera {
                 direction.getZ() + position.getZ(),
                 up.getX(), up.getY(), up.getZ());
     }
-
-
 }
