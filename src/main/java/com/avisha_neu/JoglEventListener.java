@@ -59,19 +59,36 @@ class JoglEventListener implements GLEventListener, KeyListener, MouseMotionList
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_LEFT || code == KeyEvent.VK_A) {
-            scene.getCamera().stepToTheLeft();
+            scene.getCamera().setMovingToTheLeft(true);
         }
         if (code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D) {
-            scene.getCamera().stepToTheRight();
+            scene.getCamera().setMovingToTheRight(true);
         }
         if (code == KeyEvent.VK_UP || code == KeyEvent.VK_W) {
-            scene.getCamera().stepForward();
+            scene.getCamera().setMovingForward(true);
         }
         if (code == KeyEvent.VK_DOWN || code == KeyEvent.VK_S) {
-            scene.getCamera().stepBack();
+            scene.getCamera().setMovingBack(true);
         }
         if (code == KeyEvent.VK_ESCAPE) {
             System.exit(0);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int code = e.getKeyCode();
+        if (code == KeyEvent.VK_LEFT || code == KeyEvent.VK_A) {
+            scene.getCamera().setMovingToTheLeft(false);
+        }
+        if (code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_D) {
+            scene.getCamera().setMovingToTheRight(false);
+        }
+        if (code == KeyEvent.VK_UP || code == KeyEvent.VK_W) {
+            scene.getCamera().setMovingForward(false);
+        }
+        if (code == KeyEvent.VK_DOWN || code == KeyEvent.VK_S) {
+            scene.getCamera().setMovingBack(false);
         }
     }
 
@@ -89,9 +106,7 @@ class JoglEventListener implements GLEventListener, KeyListener, MouseMotionList
     public void mouseDragged(MouseEvent e) {
     }
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {

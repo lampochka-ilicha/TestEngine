@@ -16,39 +16,76 @@ public class Camera {
     private Vector direction = new Vector(0, 0, -5);
     private final Vector up = new Vector(0, 1, 0);
 
-    public  Camera () {}
+    private boolean movingToTheLeft;
+    private boolean movingToTheRight;
+    private boolean movingForward;
+    private boolean movingBack;
+
+
+    public Camera() {
+    }
+
+    public boolean isMovingToTheLeft() {
+        return movingToTheLeft;
+    }
+
+    public void setMovingToTheLeft(boolean movingToTheLeft) {
+        this.movingToTheLeft = movingToTheLeft;
+    }
+
+    public boolean isMovingToTheRight() {
+        return movingToTheRight;
+    }
+
+    public void setMovingToTheRight(boolean movingToTheRight) {
+        this.movingToTheRight = movingToTheRight;
+    }
+
+    public boolean isMovingForward() {
+        return movingForward;
+    }
+
+    public void setMovingForward(boolean movingForward) {
+        this.movingForward = movingForward;
+    }
+
+    public boolean isMovingBack() {
+        return movingBack;
+    }
+
+    public void setMovingBack(boolean movingBack) {
+        this.movingBack = movingBack;
+    }
 
     private Vector getDirectionXZUnit() {
         return new Vector(direction.getX(), 0, direction.getZ()).normalize();
     }
 
     public void rotate(double leftRightTranslation, double upDownTranslation) {
-        double angleLeftRight = leftRightTranslation*CameraProperties.getRotationVelocity();
-        double angleUpDown = upDownTranslation*CameraProperties.getRotationVelocity();
+        double angleLeftRight = leftRightTranslation * CameraProperties.getRotationVelocity();
+        double angleUpDown = upDownTranslation * CameraProperties.getRotationVelocity();
         Vector axeLeftRight = up;
         Vector directionXZ = getDirectionXZUnit();
         Vector axeUpDown = directionXZ.multiply(up);
         direction = Manipulator.rotateVectorOnTwoAxes(axeUpDown, axeLeftRight, angleUpDown, angleLeftRight, direction);
     }
 
-    public void stepToTheLeft() {
+    public void move() {
         Vector directionXZ = getDirectionXZUnit();
-        position = Manipulator.translateVector(directionXZ.multiply(up), - CameraProperties.getVelocity(), position);
-    }
-
-    public void stepToTheRight() {
-        Vector directionXZ = getDirectionXZUnit();
-        position = Manipulator.translateVector(directionXZ.multiply(up), CameraProperties.getVelocity(), position);
-    }
-
-    public void stepForward() {
-        Vector directionXZ = getDirectionXZUnit();
-        position = Manipulator.translateVector(directionXZ, CameraProperties.getVelocity(), position);
-    }
-
-    public void stepBack() {
-        Vector directionXZ = getDirectionXZUnit();
-        position = Manipulator.translateVector(directionXZ, -CameraProperties.getVelocity(), position);
+        Vector newPosition = position;
+        if (movingBack) {
+            newPosition = Manipulator.translateVector(directionXZ, -CameraProperties.getVelocity(), newPosition);
+        }
+        if (movingForward) {
+            newPosition = Manipulator.translateVector(directionXZ, CameraProperties.getVelocity(), newPosition);
+        }
+        if (movingToTheRight) {
+            newPosition = Manipulator.translateVector(directionXZ.multiply(up), CameraProperties.getVelocity(), newPosition);
+        }
+        if (movingToTheLeft) {
+            newPosition = Manipulator.translateVector(directionXZ.multiply(up), -CameraProperties.getVelocity(), newPosition);
+        }
+        position = newPosition;
     }
 
     public void setView(GL2 gl) {

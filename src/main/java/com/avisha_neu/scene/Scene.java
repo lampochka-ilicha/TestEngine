@@ -23,6 +23,7 @@ public class Scene {
 
     public void draw(GL2 gl){
         camera.setView(gl);
+        camera.move();
         drawCube(gl);
     }
 
@@ -30,6 +31,45 @@ public class Scene {
         gl.glColor3f(1, 0, 0);
 
         double a = 1.0/2;
+
+        gl.glBegin(GL.GL_LINE_LOOP);
+        gl.glVertex3d(a, a, a);
+        gl.glVertex3d(a, -a, a);
+        gl.glVertex3d(-a, -a, a);
+        gl.glVertex3d(-a, a, a);
+        gl.glEnd();
+
+        gl.glBegin(GL.GL_LINE_LOOP);
+        gl.glVertex3d(-a, a, a);
+        gl.glVertex3d(-a, a, -a);
+        gl.glVertex3d(-a, -a, -a);
+        gl.glVertex3d(-a, -a, a);
+        gl.glEnd();
+
+        gl.glBegin(GL.GL_LINE_LOOP);
+        gl.glVertex3d(-a, -a, a);
+        gl.glVertex3d(-a, -a, -a);
+        gl.glVertex3d(a, -a, -a);
+        gl.glVertex3d(a, -a, a);
+        gl.glEnd();
+
+        gl.glBegin(GL.GL_LINE_LOOP);
+        gl.glVertex3d(a, a, a);
+        gl.glVertex3d(a, -a, a);
+        gl.glVertex3d(a, -a, -a);
+        gl.glVertex3d(a, a, -a);
+        gl.glEnd();
+
+        gl.glBegin(GL.GL_LINE_LOOP);
+        gl.glVertex3d(-a, a, -a);
+        gl.glVertex3d(a, a, -a);
+        gl.glVertex3d(a, -a, -a);
+        gl.glVertex3d(-a, -a, -a);
+        gl.glEnd();
+
+        gl.glColor3f(1, 0, 1);
+
+        a = 5.0/2;
 
         gl.glBegin(GL.GL_LINE_LOOP);
         gl.glVertex3d(a, a, a);
